@@ -1,19 +1,25 @@
-import { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ManageMenu from "./pages/ManageMenu";
+import Login from "./authentication/Login";
+import SignUp from "./authentication/SignUp";
+import { ChakraProvider } from "@chakra-ui/react";
+
+
 
 function App() {
   return (
-    <>
+    <div className="App">
+      <ChakraProvider>
       <BrowserRouter>
-        <Router>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/MenuPage" element={<ManageMenu />}></Route>
-        </Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/menuPage" element={<ManageMenu />}></Route>
+        </Routes>
       </BrowserRouter>
-    </>
+      </ChakraProvider>
+    </div>
   );
 }
 
